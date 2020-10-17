@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    
+    <form style="width: 40%; margin-left:30%;" action="{{choosen_event.id}}" method="POST">
+        {% csrf_token %}
+
+        <h1 text-align:center style="margin-left: 30%;" >Buy Ticket</h1>
+        <p>Please use debit card details.</p>
+        <hr>
+        <div class="form-group row">
+          <label for="staticUsername" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" name = "username" value="{{user.first_name}}">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="staticEventName" class="col-sm-2 col-form-label">Event Name</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" name="eventName" value="{{choosen_event.name}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="staticAmount" class="col-sm-2 col-form-label">Amount(Rs.)</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" name="eventPrice" value="{{choosen_event.price}}">
+            </div>
+          </div>
+        <div class="form-group row">
+          <label for="inputCardNumber" class="col-sm-2 col-form-label">Enter card number</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" name="cardNumber">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputExpiry" class="col-sm-2 col-form-label">Enter expiry of card</label>
+            <div class="col-sm-10">
+              <input type="month" class="form-control" name="expiryCard">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputCVV" class="col-sm-2 col-form-label">Enter CVV</label>
+            <div class="col-sm-10">
+              <input type="password" maxlength="3" class="form-control" name="CVV">
+            </div>
+            <br>
+            <br>
+            <button style="margin-left: 40%;" type="submit" class="btn btn-primary">Proceed to Pay</button>
+          </div>
+
+      </form>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+</body>
+</html>
