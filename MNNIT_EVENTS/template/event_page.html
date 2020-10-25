@@ -22,18 +22,21 @@
   <!--Event name as title and Buy ticket button on poster of event-->
   <div style="background-color: black;">
     <div style="width: 70%;" class="card bg-dark text-white mx-auto">
-      <img src="{{choosen_event.img.url}}" class="card-img" alt="event_poster">
+      <img style="height: 500px;"  src="{{choosen_event.img.url}}" class="card-img" alt="event_poster">
       
     </div>
   </div>
 
-  <br><br>
+  
 
+  <!--ticket and ambassdor button-->
+  <div class="jumbotron jumbotron-fluid">
   <div class="row">
 	<div class="col text-center">
 		<div class="section_title">
 			<h1>{{choosen_event.name}}</h1>
 		</div>
+		<br>
 		<div class="section_subtitle">{{choosen_event.des}}</div>
 		
 	</div>
@@ -52,20 +55,38 @@
 	{% else %}
 	<button type="button" class="btn btn-primary btn-sm" onclick="location.href='userList/{{choosen_event.id}}'">See User List</button>
 	{%endif%}
-
   </div>
-
-  <br><br>
-
-  <div class="row">
-	<div class="col text-center">
-		<div class="section_title">
-			<h2>Event Starts In </h2>
-		</div>
+  <br>
+  <br>
+  
+	<div class="row">
+	  <div class="col text-center">
+		  <div class="section_title">
+			  <h2>Event Starts In </h2>
+		  </div>
+	  </div>
 	</div>
-  </div>
+	<br>
+  
+	<h3 id='timer' style="text-align: center;"></h3>
 
-  <h3 id='demo'></h3>
+	<br><br>
+	<div class="text-center">
+		<h5>For more details.</h5>
+	</div>
+	<div class="text-center">
+	  <button type="button" class="btn btn-primary " onclick="location.href='{{choosen_event.url}}'">Go to Event Official Website</button>
+	</div>
+</div>
+
+	
+  <hr>
+
+
+  <!--event timer-->
+
+  
+	
 
  
   
@@ -105,13 +126,13 @@
 	  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 		
 	  // Output the result in an element with id="demo"
-	  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+	  document.getElementById("timer").innerHTML = days + "d " + hours + "h "
 	  + minutes + "m " + seconds + "s ";
 		
 	  // If the count down is over, write some text 
 	  if (distance < 0) {
 		clearInterval(x);
-		document.getElementById("demo").innerHTML = "EXPIRED";
+		document.getElementById("demo").innerHTML = "Registration Ended";
 	  }
 	}, 1000);
 	</script>

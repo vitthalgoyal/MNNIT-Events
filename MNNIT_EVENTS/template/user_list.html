@@ -8,20 +8,63 @@
 
 </head>
 <body>
-    <h1 text-align:center style="margin-left: 30%;" >Your College Users</h1>
-    <p style="margin-left: 30%;">Please ensure maximum participation.</p>
+
+    <!--navigation bar-->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">MNNIT-Events</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		
+      </nav>
+      <br>
+    <h1 text-align:center class="text-center" >Your College Users</h1>
+    <p class="text-center">Please ensure maximum participation.</p>
     <hr>
-    {% for user in sameCollegeUser %}
-    <div style="width: 60%;margin-left:30%" class="row">
-        <div class="col-sm-4">{{user.user_id}}</div>
-        <div class="col-sm-2"></div>
-        {% if ticket.objects.filter(user_id=user.user_id & event_id=evId).exists() %}
-        <button>Remind</button>
-        {% else %}
-        <button>Request</button>
-        {% endif %}
+    <div style="width: 60%;margin-left:20%" class="row text-center">
+        <div class="col-sm-2 font-weight-bold">Full Name</div>
+        <div class="col-sm-4 font-weight-bold">Email</div>
+        <div class="col-sm-2 font-weight-bold">Phone Number</div>
+        <div class="col-sm-2 font-weight-bold">Ticket Status</div>
+        <div class="col-sm-2 font-weight-bold">Action</div>
+        
       </div>
+      <br><br>
+
+    <!--User purchased ticket-->
+    {% for user in sameCollegeUserPurchsed %}
+    <div style="width: 60%;margin-left:20%" class="row text-center">
+        <div class="col-sm-2">{{user.user.get_full_name}}</div>
+        <div class="col-sm-4">{{user.user.email}}</div>
+        <div class="col-sm-2">{{user.phone_number}}</div>
+        <div class="col-sm-2">Purchased</div>
+        <div class="col-sm-2">
+        <button class="btn btn-primary btn-sm"  >Remind</button>
+        </div>
+        
+      </div>
+      <br>
     {% endfor %}
+
+    <!--User not purchased ticket-->
+
+    {% for user in sameCollegeUserNotPurchsed %}
+    <div style="width: 60%;margin-left:20%" class="row text-center">
+        <div class="col-sm-2">{{user.user.get_full_name}}</div>
+        <div class="col-sm-4">{{user.user.email}}</div>
+        <div class="col-sm-2">{{user.phone_number}}</div>
+        <div class="col-sm-2">Not Purchased</div>
+        <div class="col-sm-2">
+            <button class="btn btn-primary btn-sm"  >Request</button>
+            </div>
+        
+      </div>
+      <br>
+    {% endfor %}
+
+
+    
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

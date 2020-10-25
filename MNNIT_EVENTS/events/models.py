@@ -19,6 +19,7 @@ class events(models.Model):
     des = models.TextField()
     price = models.IntegerField()
     start_date = models.DateField()
+    url = models.URLField(max_length = 200,blank=True)
     duration_days = models.PositiveIntegerField()
 
 class query(models.Model):
@@ -39,6 +40,8 @@ class campusAmbassador(models.Model):
     approval = models.BooleanField(default=False)
 
 class ticket(models.Model):
+    
+    id_ticket = models.ForeignKey(fullUser,on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     user_id = models.PositiveIntegerField()
     event_name = models.CharField(max_length=100)

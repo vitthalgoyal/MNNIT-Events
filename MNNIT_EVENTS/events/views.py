@@ -115,14 +115,14 @@ def requestCA(request,evId):
 def payment(request,evId):
     choosen_event = events.objects.filter(id=evId)
     curr_user = request.user
-    curr_full_user = fullUser.objects.filter(user_id=curr_user.id) 
+    curr_full_user = curr_user.fulluser
     if request.method=="POST":
         name = curr_user.first_name
         event_name = request.POST['eventName']
         user_id = curr_user.id
         event_id = evId
-        college_name = curr_full_user[0].college_name
-        tik = ticket(name=name,event_name=event_name,user_id=user_id,event_id=event_id,college_name=college_name)
+        college_name = curr_full_user.college_name
+        tik = ticket(id_ticket=curr_full_user,name=name,event_name=event_name,user_id=user_id,event_id=event_id,college_name=college_name)
         tik.save()
         return redirect('/details/'+str(evId))
         
@@ -131,10 +131,16 @@ def payment(request,evId):
 
 def userList(request,evId):
     curr_user = request.user
-    curr_full_user = fullUser.objects.get(user_id=curr_user.id)
-    sameCollegeUser = fullUser.objects.filter(college_name=curr_full_user.college_name)
-    tickets = ticket.objects.all()
-    return render(request,'user_list.html',{'sameCollegeUser':sameCollegeUser,'tickets':tickets,'evId':evId})
+    curr_full_user = curr_user.fulluser
+    sameCollegeUserPurchsed = fullUser.objects.filter(college_name=curr_full_user.college_name , ticket__event_id=evId)
+    sameCollegeUserNotPurchsed = fullUser.objects.filter(college_name=curr_full_user.college_name).exclude(id__in=sameCollegeUserPurchsed)
+    return render(request,'user_list.html',{'sameCollegeUserPurchsed':sameCollegeUserPurchsed,'sameCollegeUserNotPurchsed':sameCollegeUserNotPurchsed,'evId':evId})
+
+
+def profile(request):
+    curr_user = request.user
+    curr_full_user = curr_user.fulluser
+    return render(request,'profile.html',{'curr_user':curr_user,'curr_full_user':curr_full_user})
 
 
 

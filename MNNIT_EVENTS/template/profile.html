@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+
+  <!--navigation bar-->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">MNNIT-Events</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		
+	  </nav>
+
+  <!--jumbotron-->
+    
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container ">
+      <h1 class="display-4">Welcome {{curr_user.first_name}}</h1>
+      <p class="lead">This is your profile page. You can see the your details here.</p>
+    </div>
+  </div>
+  
+
+
+  <!--user data-->
+
+  <div class="col-xl-8 order-xl-1 mx-auto">
+    <div class="card bg-white ">
+      <div class="card-header bg-white border-0">
+        <div class="row align-items-center">
+          <div class="col-8">
+            <h3 class="mb-0">My account</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <form>
+            <fieldset disabled="disabled">
+          <h6 class="heading-small text-muted mb-4">User information</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group focused">
+                  <label class="form-control-label" for="input-username">Username</label>
+                  <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="{{user.username}}">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-email">Email address</label>
+                  <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="{{user.email}}">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group focused">
+                  <label class="form-control-label" for="input-first-name">First name</label>
+                  <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="{{user.first_name}}">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group focused">
+                  <label class="form-control-label" for="input-last-name">Last name</label>
+                  <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="{{user.last_name}}">
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
+          <!-- Address -->
+          <h6 class="heading-small text-muted mb-4">Contact information</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group focused">
+                  <label class="form-control-label" for="input-address">College Name</label>
+                  <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="{{curr_full_user.college_name}}">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group focused">
+                  <label class="form-control-label" for="input-phone-number">Phone Number</label>
+                  <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="{{curr_full_user.phone_number}}">
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <hr class="my-4">
+        </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!--user data end-->
+  <!--Footer-->
+
+	<footer style="background-color: dimgray;">
+		<br>
+		<p style="margin-left: 30%;color:gainsboro; ">© Copyright 2020 Hum_Honge_Kamyab - All Rights Reserved</p>
+	</footer>
+  
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+	
+
+
+</body>
+</html>
