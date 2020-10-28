@@ -10,8 +10,15 @@
 </head>
 <body>
 
-
-
+<!--navigation bar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">MNNIT-Events</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  </nav>
+<br>
 <form style="width: 40%; margin-left:30%;" action="login" method="post" >
   <h2 text-align:center style="margin-left: 30%;" >Login Form</h2>
   {% csrf_token %}
@@ -37,6 +44,7 @@
     <label class="form-check-label" for="exampleCheck1">Remember Me</label>
   </div>
   <button type="submit" class="btn btn-primary">Login</button>
+  <button type="button" class="btn btn-primary " onclick="location.href='reset_password'">Forgot Password</button>
 </form>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
