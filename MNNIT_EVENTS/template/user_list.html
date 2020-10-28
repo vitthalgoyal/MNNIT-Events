@@ -39,7 +39,7 @@
         <div class="col-sm-2">{{user.phone_number}}</div>
         <div class="col-sm-2">Purchased</div>
         <div class="col-sm-2">
-        <button class="btn btn-primary btn-sm"  >Remind</button>
+          <button class="btn btn-primary btn-sm" onclick="location.href='sendReminder/{{user.user.id}}/{{evId}}'"  >Remind</button>
         </div>
         
       </div>
@@ -55,7 +55,7 @@
         <div class="col-sm-2">{{user.phone_number}}</div>
         <div class="col-sm-2">Not Purchased</div>
         <div class="col-sm-2">
-            <button class="btn btn-primary btn-sm"  >Request</button>
+            <button class="btn btn-primary btn-sm" onclick="location.href='sendRequest/{{user.user.id}}/{{evId}}'"  >Request</button>
             </div>
         
       </div>

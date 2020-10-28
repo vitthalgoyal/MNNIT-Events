@@ -34,6 +34,9 @@ urlpatterns = [
     path('reset_password_complete/', 
         auth_views.PasswordResetCompleteView.as_view(template_name="reset_password_done.html"), 
         name="password_reset_complete"),
+
+    path('details/userList/sendRequest/<int:user_id>/<int:evId>',views.sendRequest,name='sendRequest'),
+    path('details/userList/sendReminder/<int:user_id>/<int:evId>',views.sendReminder,name='sendReminder'),
 ]
 
 

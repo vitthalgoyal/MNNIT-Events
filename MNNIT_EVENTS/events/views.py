@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from .models import events,query,collegeName,campusAmbassador,fullUser,ticket
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -141,6 +142,48 @@ def profile(request):
     curr_user = request.user
     curr_full_user = curr_user.fulluser
     return render(request,'profile.html',{'curr_user':curr_user,'curr_full_user':curr_full_user})
+
+
+def sendRequest(request,user_id,evId):
+
+    req_user=User.objects.get(id=user_id)
+
+    choosen_event=events.objects.get(id=evId)
+    send_mail('Request from '+str(request.user.first_name)+' '+str(request.user.last_name),
+    'Dear '+str(req_user.first_name) +'\n\n'
+
+'We would like to extend an open invitation to all users of ' + str(request.user.fulluser.college_name) + ' to the '+ str(choosen_event.name)+'\n'
+'Please book your tickets well in advanced , it would be appreciated. We hope to see everyone there.\n\n'
+
+'For more information about the event please visit event official website '+ choosen_event.url +"\n\n"
+
+'Sincerely,\n'+str(request.user.first_name)+' '+str(request.user.last_name)
+
+,
+    'vitthalgoyal2002@gmail.com',
+    [req_user.email]
+    )
+    return render(request,'sendRequest.html',{'evId':evId})
+
+def sendReminder(request,user_id,evId):
+
+    req_user=User.objects.get(id=user_id)
+
+    choosen_event=events.objects.get(id=evId)
+    send_mail('Reminder from '+str(request.user.first_name)+' '+str(request.user.last_name),
+    'Dear '+str(req_user.first_name) +'\n\n'
+
+'We would like to remind you to the event '+ str(choosen_event.name)+' for which you have already purchased the ticket \n'
+'Please visit the venue well in time , it would be appreciated. We hope to see you there.\n\n'
+
+
+'Sincerely,\n'+str(request.user.first_name)+' '+str(request.user.last_name)
+
+,
+    'vitthalgoyal2002@gmail.com',
+    [req_user.email]
+    )
+    return render(request,'sendReminder.html',{'evId':evId})
 
 
 
